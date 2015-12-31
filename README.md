@@ -130,7 +130,7 @@ Finding:
 posts = Post.where(:author => "Arrington")
 # the query is lazy loaded
 # nothing gets sent to the Parse server until you run #all, #count, or any Array method on the query 
-# (e.g. #first, #each, or #map)
+# (e.g. #first, #last, #each, or #map)
 
 posts.each do |post|
   "#{post.title}, by #{post.author}"
@@ -140,6 +140,9 @@ posts.map {|p| p.title} #=> ["Unpaid blogger", "Uncrunched"]
 
 id = "DjiH4Qffke"
 p = Post.find(id) #simple find by id
+
+Post.first #=> First Post object based on oldest createdAt
+Post.last #=> Last Post object based on newest createdAt
 
 # ActiveRecord style find commands
 Post.find_by(:title => "Uncrunched") #=> A Post object
