@@ -43,7 +43,7 @@ class Query
   end
   
   def order(attr)
-    orders = attr.split(" ")
+    orders = attr.to_s.split(" ")
     if orders.count > 1
       criteria[:order] = orders.last.downcase == "desc" ? "-#{orders.first}" : "#{orders.first}"
     else

@@ -146,6 +146,10 @@ Post.find_by(:title => "Uncrunched") #=> A Post object
 Post.find_by_title("Uncrunched") #=> A Post object
 Post.find_all_by_author("Arrington") #=> An Array of Posts
 
+# ActiveRecord style ordering
+Post.order(:author)
+Post.order("author desc")
+
 # batch save an array of objects
 Post.save_all(array_of_objects)
 
