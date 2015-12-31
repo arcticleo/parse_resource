@@ -32,6 +32,12 @@ module ParseResource
         Query.new(self).order("createdAt").limit(1).first
       end
 
+      # Find the last object based on newest createdAt timestamp.
+      #
+      def last
+        Query.new(self).order("createdAt desc").limit(1).first
+      end
+
 	    # Limits the number of objects returned
 	    #
 	    def limit(n)
