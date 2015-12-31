@@ -26,11 +26,11 @@ module ParseResource
 	      Query.new(self).all
 	    end
 
-	    # Find the first object. Fairly random, not based on any specific condition.
-	    #
-	    def first
-	      Query.new(self).limit(1).first
-	    end
+      # Find the first object based on oldest createdAt timestamp.
+      #
+      def first
+        Query.new(self).order("createdAt").limit(1).first
+      end
 
 	    # Limits the number of objects returned
 	    #
