@@ -148,6 +148,7 @@ Post.last #=> Last Post object based on newest createdAt
 Post.find_by(:title => "Uncrunched") #=> A Post object
 Post.find_by_title("Uncrunched") #=> A Post object
 Post.find_all_by_author("Arrington") #=> An Array of Posts
+Post.find_or_initialize_by(:title => "Uncrunched") #=> Either existing Post object, or a new if it didn't already exist. 
 
 # ActiveRecord style ordering
 Post.order(:author)
