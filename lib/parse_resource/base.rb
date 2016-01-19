@@ -352,6 +352,18 @@ module ParseResource
       record
     end
 
+    # Find existing or initialize new ParseResource::Base object by given key/value pair
+    #
+    def self.find_or_initialize_by(*args)
+      raise RecordNotFound, "Couldn't find an object without arguments" if args.blank?
+      raise StatementInvalid, "Expected Hash as argument." if args.first.class != Hash
+      key, value = args.first.first
+      record = where(key => value).first
+      record = self.new unless record
+      record.send("#{key.to_s}=", value)
+      record
+    end
+
     # Find a ParseResource::Base object by chaining #where method calls.
     #
     def self.where(*args)
